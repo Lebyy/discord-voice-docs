@@ -7,7 +7,7 @@ class DocsStore {
 
     get docs() {
         if (this._docs.length) return this._docs;
-        return window.sessionStorage.getItem(`docs-${this.manager.id}`) ? JSON.parse(window.sessionStorage.getItem(`docs-${this.manager.id}`)) : this._docs;
+        return window.sessionStorage.getItem("__docs__") ? JSON.parse(window.sessionStorage.getItem("__docs__")) : this._docs;
     }
 
     set docs(docs) {
@@ -19,12 +19,11 @@ class DocsStore {
         await this.manager.fetchTags();
         const data = await Promise.all(
             this.manager.tags.map(async (m) => {
-							console.log(this)
                 const documentation = await this.manager.fetchDocs(m);
                 documentation.links = this.links;
-                documentation.classes = [];
-                documentation.typedefs = [];
-                documentation.externals = [];
+                documentation.classes ??= [];
+                documentation.typedefs ??= [];
+                documentation.externals ??= [];
                 documentation.classes.sort((a, b) => a.name.localeCompare(b.name));
                 documentation.typedefs.sort((a, b) => a.name.localeCompare(b.name));
                 documentation.global = this.manager.global;
@@ -61,7 +60,7 @@ class DocsStore {
             })
         );
 
-        window.sessionStorage.setItem(`docs-${this.manager.id}`, JSON.stringify(data));
+        window.sessionStorage.setItem("__docs__", JSON.stringify(data));
         this.docs = data;
 
         return this.docs;

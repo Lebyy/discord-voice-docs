@@ -95,9 +95,11 @@ const config = {
         VoiceConnection: "https://discord.js.org/#/docs/main/stable/class/VoiceConnection",
         Snowflake: "https://discord.js.org/#/docs/main/stable/typedef/Snowflake",
         YTDLDownloadOptions: "https://github.com/fent/node-ytdl-core#ytdlurl-options",
-        User: "https://discord.js.org/#/docs/main/stable/class/User",
+        DiscordUser: "https://discord.js.org/#/docs/main/stable/class/User",
+				Member: "https://discord.js.org/#/docs/main/stable/class/GuildMember",
         GuildResolvable: "https://discord.js.org/#/docs/main/stable/typedef/GuildResolvable",
         UserResolvable: "https://discord.js.org/#/docs/main/stable/typedef/UserResolvable",
+				PermissionResolvable: "https://discord.js.org/#/docs/main/stable/typedef/PermissionResolvable",
         unknown: "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html#new-unknown-top-type",
         Duplex: "https://nodejs.org/dist/latest/docs/api/stream.html#stream_class_stream_duplex",
         Guild: "https://discord.js.org/#/docs/main/stable/class/Guild"

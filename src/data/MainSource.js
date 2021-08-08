@@ -1,12 +1,12 @@
   import semver from "semver";
   import DocsManager from "./DocsManager";
 
-  const blacklisted = new Set(["old", "gh-pages", "docs"]); // branches to not include in docs
+  const blacklisted = new Set(["old", "gh-pages", "docs", "master"]); // branches to not include in docs
 
   export default new DocsManager({
       id: "main", // required: /docs/main
       name: "Main", // source name
-      global: "DiscordPlayer", // will append DiscordPlayer. before constructor name
+      global: "DiscordVoice", // will append DiscordPlayer. before constructor name
       repo: "Lebyy/discord-voice", // the github repo where your docs are located at
       defaultTag: "rewrite", // /docs/main/master
       docsBranch: "docs", // name of the branch where your docs files are located at
