@@ -10,6 +10,9 @@
     "start": "sirv public --single --no-clear --host",
     "format": "prettier --write config.js src/*.{js,json,ts,html,svelte} src/**/*.{js,json,ts,html,svelte}"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-commonjs": "^17.0.0",
