@@ -1,13 +1,14 @@
 import DocsManager from "./DocsManager";
 
-const blacklisted = new Set(["docs", "master"]);
+const blacklisted = new Set(["docs", "gh-pages"]);
 
 export default new DocsManager({
     id: "main",
     name: "Main",
-    global: "Canvacord",
-    repo: "DevSnowflake/canvacord",
-    defaultTag: "main",
-    branchFilter: (branch) => !blacklisted.has(branch),
+    global: "Player",
+    repo: "Androz2091/discord-player",
+    defaultTag: "master",
+    docsBranch: "docs",
+    branchFilter: (branch) => !blacklisted.has(branch) && !branch.startsWith("dependabot/"),
     tagFilter: () => false
 });
