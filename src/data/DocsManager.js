@@ -6,7 +6,6 @@ class DocsManager {
     constructor(docsOptions) {
         if (!docsOptions) throw new Error("Invalid docs options");
 
-        this.docsBranch = docsOptions.docsBranch ?? "docs";
         this.id = docsOptions.id;
         this.name = docsOptions.name;
         this.global = docsOptions.global;
@@ -37,9 +36,7 @@ class DocsManager {
                 throw e;
             })
             .then((data) => {
-                let [branches, tags] = data;
-                if (branches == null) branches = [];
-                if (tags == null) tags = [];
+                const [branches, tags] = data;
 
                 this.tags = [this.defaultTag];
                 localStorage.setItem(`src-${this.id}`, JSON.stringify({ branches, tags }));
@@ -81,11 +78,11 @@ class DocsManager {
     }
 
     async fetchDocs(tag) {
-        return await fetch(`https://raw.githubusercontent.com/${this.repo}/${this.docsBranch}/${tag}.json`, {cache: "no-cache"}).then(async (res) => {
+        return await fetch(`https://raw.githubusercontent.com/${this.repo}/docs/${tag}.json`).then(async (res) => {
             if (!res.ok && !window.localStorage.getItem(`docs-${tag}`)) throw new Error("Could not fetch docs data");
             const doc = res.ok ? await res.json() : JSON.parse(window.localStorage.getItem(`docs-${tag}`));
             window.localStorage.setItem(`docs-${tag}`, JSON.stringify(doc));
-						return doc;
+            return doc;
         });
     }
 }

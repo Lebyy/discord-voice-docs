@@ -1,10 +1,10 @@
 <script>
-    import Switch from "svelte-switch";
     import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
     import { FontAwesomeIcon } from "fontawesome-svelte";
+
     const config = window.yukitoki.config;
     let currentTheme = window.yukitoki.theme;
-    let checkedValue = false;
+
     function toggleMobileMenu(ev) {
         ev.preventDefault();
         const elm = document.getElementById("mobile-menu");
@@ -20,9 +20,7 @@
         }
     }
 
-    function toggleTheme(e) {
-        const { checked } = e.detail;
-        checkedValue = checked;
+    function toggleTheme() {
         window.yukitoki.toggleTheme();
         currentTheme = window.yukitoki.theme;
     }
@@ -55,13 +53,10 @@
             </div>
 
             <div class="absolute inset-y-0 right-0 items-center hidden md:block pt-3">
-                <span class="sr-only">#</span>
-                <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
-                    <div slot="unCheckedIcon" />
-                    <div slot="checkedIcon" class="text-white">
-                        <FontAwesomeIcon icon={faMoon} />
-                    </div>
-                </Switch>
+                <button on:click={toggleTheme} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white text-2xl" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">#</span>
+                    <FontAwesomeIcon icon={currentTheme === "dark" ? faSun : faMoon} />
+                </button>
             </div>
 
             <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
@@ -91,13 +86,10 @@
                     </a>
                 {/if}
             {/each}
-            <span class="sr-only">#</span>
-            <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
-                <div slot="unCheckedIcon" />
-                <div slot="checkedIcon">
-                    <FontAwesomeIcon icon={faMoon} />
-                </div>
-            </Switch>
+            <button on:click={toggleTheme} type="button" class="p-2 rounded-md text-white text-2xl" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">#</span>
+                <FontAwesomeIcon icon={currentTheme === "dark" ? faSun : faMoon} />
+            </button>
         </div>
     </div>
 </header>

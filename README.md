@@ -1,5 +1,5 @@
 # Yukitoki
-A customizable website to view docs for your projects.
+A customizable website to view docs for Snowflake Studio ❄'s projects.
 
 # Built with
 - svelte
@@ -13,3 +13,6 @@ A customizable website to view docs for your projects.
 
 # Live Preview
 **[https://yukitoki.netlify.app](https://yukitoki.netlify.app)**
+
+# Preview
+![](https://i.imgur.com/c8wWrZf.png)

@@ -1,8 +1,7 @@
-  import MainSource from "./MainSource";
+import MainSource from "./MainSource";
 
+const sources = {
+    [MainSource.id]: MainSource
+};
 
-  const sources = {
-      [MainSource.id]: MainSource
-  };
-
-  export default sources;
+export default sources;
